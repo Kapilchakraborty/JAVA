@@ -1,31 +1,29 @@
 import java.io.*;
 import java.util.*;
-import java.text.*;
-import java.math.*;
-import java.util.regex.*;
-
 public class Solution {
-
     public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        int n,sum=0,c=0;
         Scanner sc = new Scanner(System.in);
-        String[][] numArray = new String[6][];
-        int largestSum = 0;
-        for(int i=0; i<6; i++){
-            numArray[i]=sc.nextLine().split(" ");
+        n = sc.nextInt();
+        int[] a = new int[n];
+        for(int i=0;i<n;i++){
+            a[i] = sc.nextInt();
         }
-        
-        for(int i=0;i<=3;i++){
-            for(int j=0;j<=3;j++){
-                int sum = Integer.parseInt(numArray[i][j])+Integer.parseInt(numArray[i][j+1])+Integer.parseInt(numArray[i][j+2])+Integer.parseInt(numArray[i+1][j+1])+Integer.parseInt(numArray[i+2][j])+Integer.parseInt(numArray[i+2][j+1])+Integer.parseInt(numArray[i+2][j+2]);
-                if(i==0 && j==0){
-                    largestSum=sum;
-                }else{
-                    if(sum>largestSum){
-                        largestSum=sum;
-                    }
+        for(int i=0;i<n;i++)
+        {
+            for(int j=i;j<n;j++)
+            {
+                sum = 0;
+                for(int k=i;k<=j;k++)
+                {
+                    sum+=a[k];
+                   
                 }
+                 if(sum<0)c++;
             }
         }
-        System.out.println(largestSum);
+        System.out.print(c);
     }
+    
 }
